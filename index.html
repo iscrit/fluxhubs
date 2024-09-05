@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FluxHub - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countapi-js/1.0.1/countapi.min.js"></script> <!-- For visitor and click counters -->
+</head>
+<body class="dark">
+    <div class="overlay" id="overlay">
+        <div class="popup" id="popup">
+            <span class="close-btn" id="close-btn">&times;</span>
+            <h2>Popup Title</h2>
+            <p>Popup content goes here.</p>
+        </div>
+    </div>
+
+    <header class="top-banner">
+        <div class="logo">
+            <img src="favicon.png" alt="FluxHub Logo">
+        </div>
+        <div class="banner-content">
+            <h1>FluxHub</h1>
+            <p>We give power to the freelancers. FluxHub is a talented team of engineers and artists who specialize in bringing exciting projects from concept to launch using new and innovative technologies.</p>
+            <div class="project-count">
+                <span id="project-number">0</span>+ projects
+            </div>
+        </div>
+    </header>
+
+    <nav class="toolbar">
+        <h2>Our Latest Projects</h2>
+        <div class="search-bar">
+            <span class="search-icon">🔎</span>
+            <input type="text" placeholder="Search projects..." id="search-input">
+        </div>
+        <button id="theme-toggle">Toggle Light/Dark Mode</button>
+    </nav>
+
+    <main class="container">
+        <section id="projects" class="projects">
+            <!-- Projects will be loaded here -->
+        </section>
+
+        <div class="placeholder">
+            <p>Check out our <a href="https://github.com/Builtmc" target="_blank">GitHub</a> for more exciting projects!</p>
+        </div>
+
+        <div class="placeholder">More projects soon!</div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 FluxHub. All rights reserved.</p>
+        <div id="visitor-counter">Visitors: 0</div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

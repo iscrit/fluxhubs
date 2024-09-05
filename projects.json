@@ -1,0 +1,19 @@
+{
+    "projects": [
+        {
+            "title": "Hostfinder.top",
+            "date": "9/2/24",
+            "about": "Find the cheapest host, Compare hosts, Compare cpus all in one place.",
+            "link": "https://hostfinder.top/",
+            "image": "https://hostfinder.top/favicon.png"
+        },
+        {
+            "title": "Optium (Media pauser)",
+            "date": "9/3/24",
+            "about": "Save preformance on chrome, Pauses content on tabs that are not open!",
+            "link": "/Docs/MediaPause.html",
+            "image": "/Optium.png"
+        }
+        
+    ]
+}

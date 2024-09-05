@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #000000, #1a1a2e, #0f3460);
+    color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+h1 {
+    color: #00bfff;
+}
+
+p {
+    font-size: 18px;
+}
+
+ol {
+    text-align: left;
+    margin: 20px 0;
+}
+
+.download-button {
+    display: inline-block;
+    padding: 15px 30px;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #fff;
+    background: linear-gradient(45deg, #1a73e8, #00bfff);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.download-button:hover {
+    background: linear-gradient(45deg, #00bfff, #1a73e8);
+}
