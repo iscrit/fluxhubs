@@ -8,7 +8,7 @@
     <link rel="icon" href="favicon.png" type="image/png">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/countapi-js/1.0.1/countapi.min.js"></script>
 </head>
-<body>
+<body class="dark">
     <header class="top-banner">
         <div class="logo">
             <img src="favicon.png" alt="FluxHub Logo">
@@ -16,34 +16,36 @@
         <div class="banner-content">
             <h1 id="animated-title" class="animated-title">Welcome to FluxHub</h1>
             <p>Explore our latest projects below.</p>
-            <button id="theme-toggle" class="theme-toggle">🌗 Toggle Theme</button>
         </div>
     </header>
 
     <nav class="toolbar">
         <div class="search-bar">
-            <input type="text" placeholder="Search by project name..." id="search-input">
+            <input type="text" placeholder="Search by project name..." id="search-input" aria-label="Search Projects">
         </div>
     </nav>
 
     <main class="container">
+        <!-- Loader -->
+        <div id="loader" class="loader">Loading...</div>
+
+        <!-- Projects Section -->
         <section id="projects" class="projects">
             <!-- Projects dynamically loaded from JSON will go here -->
         </section>
         <div class="placeholder">
-            <p>Visit our <a href="https://github.com/Builtmc" target="_blank">GitHub</a> for more exciting projects!</p>
+            <p>Visit our <a href="https://github.com/Builtmc" target="_blank" rel="noopener noreferrer">GitHub</a> for more exciting projects!</p>
         </div>
     </main>
 
     <!-- Live Visitor Counter -->
-    <div id="visitor-counter" class="visitor-counter">Visitors: Live count soon</div>
 
     <!-- Popup -->
-    <div id="popup" class="popup">
+    <div id="popup" class="popup" role="dialog" aria-labelledby="popup-title" aria-hidden="true">
         <div class="popup-content">
-            <span class="close-btn" id="close-btn">&times;</span>
-            <h2>Popup Title</h2>
-            <p>This is customizable content for the popup. Add more details here.</p>
+            <button class="close-btn" id="close-btn" aria-label="Close Popup">&times;</button>
+            <h2 id="popup-title">Welcome</h2>
+            <p>Check out the projects! https://hostfinder.top/discord</p>
         </div>
     </div>
 

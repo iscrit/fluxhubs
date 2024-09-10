@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {
             const projectsContainer = document.getElementById("projects");
-            data.projects.forEach((project, index) => {
+            data.projects.forEach((project) => {
                 const projectCard = document.createElement("div");
                 projectCard.className = "project-card";
 
@@ -25,20 +25,30 @@ document.addEventListener("DOMContentLoaded", () => {
                 projectCard.addEventListener('click', () => {
                     countapi.hit('fluxhub', project.title).then((result) => {
                         console.log(`${project.title} clicked ${result.value} times`);
-                    });
+                    }).catch(error => console.error('Error tracking click:', error));
                 });
             });
+
+            // Hide loader and show projects
+            const loader = document.getElementById('loader');
+            const projectsSection = document.getElementById('projects');
+            setTimeout(() => {
+                loader.style.display = 'none';
+                projectsSection.style.opacity = 1;
+            }, 2000); // Adjust the delay as needed
         })
         .catch(error => console.error('Error loading projects:', error));
 
     // Dark/Light theme toggle
     const themeToggle = document.getElementById('theme-toggle');
-    themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark');
-        // Save the current theme in localStorage
-        const theme = document.body.classList.contains('dark') ? 'dark' : 'light';
-        localStorage.setItem('theme', theme);
-    });
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            // Save the current theme in localStorage
+            const theme = document.body.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        });
+    }
 
     // Load the theme from localStorage
     const savedTheme = localStorage.getItem('theme');
@@ -48,42 +58,58 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Search functionality
     const searchInput = document.getElementById('search-input');
-    searchInput.addEventListener('input', function () {
-        const searchValue = searchInput.value.toLowerCase();
-        const projects = document.querySelectorAll('.project-card');
+    if (searchInput) {
+        searchInput.addEventListener('input', function () {
+            const searchValue = searchInput.value.toLowerCase();
+            const projects = document.querySelectorAll('.project-card');
 
-        projects.forEach(project => {
-            const title = project.querySelector('.project-title').textContent.toLowerCase();
-            if (title.includes(searchValue)) {
-                project.style.display = '';
-            } else {
-                project.style.display = 'none';
-            }
+            projects.forEach(project => {
+                const title = project.querySelector('.project-title').textContent.toLowerCase();
+                if (title.includes(searchValue)) {
+                    project.style.display = '';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
         });
-    });
+    }
 
     // Live visitor counter using CountAPI
-    countapi.visits('fluxhub').then((result) => {
-        document.getElementById('visitor-counter').textContent = `Visitors: ${result.value}`;
-    });
+    countapi.visits('fluxhub')
+        .then((result) => {
+            document.getElementById('visitor-counter').textContent = `Visitors: ${result.value}`;
+        })
+        .catch(error => {
+            console.error('Error fetching visitor count:', error);
+            document.getElementById('visitor-counter').textContent = 'Visitors: Error';
+        });
 
     // Popup functionality
     const popup = document.getElementById('popup');
     const closeBtn = document.getElementById('close-btn');
     
+    function openPopup() {
+        if (popup) {
+            popup.style.display = 'flex';
+            popup.setAttribute('aria-hidden', 'false');
+        }
+    }
+
+    function closePopup() {
+        if (popup) {
+            popup.style.display = 'none';
+            popup.setAttribute('aria-hidden', 'true');
+        }
+    }
+
     document.addEventListener('click', (event) => {
         if (event.target.classList.contains('open-popup')) {
-            popup.style.display = 'flex';
+            openPopup();
+        } else if (event.target === closeBtn || (popup && event.target === popup)) {
+            closePopup();
         }
     });
 
-    closeBtn.addEventListener('click', () => {
-        popup.style.display = 'none';
-    });
-
-    popup.addEventListener('click', (event) => {
-        if (event.target === popup) {
-            popup.style.display = 'none';
-        }
-    });
+    // Example: Open the popup after 2 seconds for demonstration
+    setTimeout(openPopup, 2000);
 });
