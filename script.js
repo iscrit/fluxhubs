@@ -9,14 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 projectCard.className = "project-card";
 
                 projectCard.innerHTML = `
-                    <a href="${project.link}" target="_blank">
-                        <img src="${project.image}" alt="${project.title}" class="project-image">
-                        <div class="project-content">
-                            <h2 class="project-title">${project.title}</h2>
-                            <p class="project-date">Released: ${project.date}</p>
-                            <p class="project-about">${project.about}</p>
-                        </div>
-                    </a>
+<a href="${project.link}" target="_blank">
+    <img src="${project.image}" alt="${project.title}" class="project-image">
+    <div class="project-content">
+        <h2 class="project-title">${project.title}</h2>
+        <p class="project-date">Released: ${project.date}</p>
+        <p class="project-about">${project.about}</p>
+    </div>
+</a>
+
                 `;
 
                 projectsContainer.appendChild(projectCard);
